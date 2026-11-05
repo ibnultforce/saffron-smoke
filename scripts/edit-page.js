@@ -1974,6 +1974,8 @@ Look at it the way a demanding senior designer would before showing it to the cl
 - Colour, depth and contrast: does it feel finished and polished, with enough contrast everywhere?
 - Images: well sized and cropped, placed where they help.
 - Anything broken: overlapping or cut-off text, horizontal scrolling, invisible text, awkward wrapping, squashed columns or misaligned grids, especially on the phone.
+- Length: visitors on a phone stop scrolling. If the page is more than about 8 phone screens long, tighten vertical spacing and trim repetition to bring it nearer that, without dropping anything the request asked for.
+- Facts: sample people (names, photos of staff), opening hours, prices, addresses or phone numbers the request didn't give must not be on the page; take them out.
 
 Then fix what's weak. Keep the page's content, facts, links and images, and everything the request asked for; don't add images you weren't given.
 
@@ -2020,7 +2022,7 @@ const SHOWN_EARLIER = 'Screenshots of an earlier version, no longer shown.';
 function screenshotBlocks(screens) {
   const blocks = [];
   for (const screen of screens) {
-    blocks.push({ type: 'text', text: `${screen.shots.length} screen${screen.shots.length === 1 ? '' : 's'} on ${screen.label}, top to bottom (the page is ${screen.pageHeight} px tall there):` });
+    blocks.push({ type: 'text', text: `${screen.shots.length} screen${screen.shots.length === 1 ? '' : 's'} on ${screen.label}, top to bottom (the page is ${screen.pageHeight} px tall there, about ${Math.max(1, Math.round(screen.pageHeight / screen.height))} screens):` });
     for (const shot of screen.shots) blocks.push({ type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: shot.data } });
   }
   return [...blocks, { type: 'text', text: REVIEW_ASK }];

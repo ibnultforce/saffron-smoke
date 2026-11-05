@@ -595,7 +595,9 @@ to a cheaper `deepseek-*` model its proxy routes), and every use of it falls bac
   `.git/twinstack-design-review/`), serves it on a loopback port and screenshots it in headless
   Chrome, one screen at a time at 1280 and 390 px wide; the screenshots go to
   `TWINSTACK_REVIEW_MODEL` (else `CLAUDE_MODEL`, at medium effort) in the same conversation, which
-  answers with `<<<<<<< FIND` / `=======` / `>>>>>>> REPLACE` fixes (or `NO CHANGES`), applied by
+  answers with `<<<<<<< FIND` / `=======` / `>>>>>>> REPLACE` fixes (or `NO CHANGES`); it's told how many
+  phone screens long the page is (past about 8, it tightens it) and to take out sample people, opening
+  hours, prices or contact details the request didn't give. The fixes are applied by
   `applyFixes` (a FIND that isn't in the page exactly once is skipped). The fixed page must pass
   the same checks as the first reply, or the last good version stays; each round is listed in the
   proposal's `checks`. Edits of shared data
